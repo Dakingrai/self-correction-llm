@@ -49,7 +49,7 @@ def prepare_dataset(num_examples):
         return full_dataset.select(sampled_indices)
 
 
-def main(model_name, cache_dir):
+def main(model_name, cache_dir, results_path):
     tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=cache_dir)
     num_examples = 100  # Specify the number of examples you want to use
     dataset = prepare_dataset(num_examples)
@@ -67,17 +67,19 @@ def main(model_name, cache_dir):
         assert len(tokenizer.tokenize(tmp["corrupt_question"])) == len(tokenizer.tokenize(tmp["question"]))
         new_dataset.append(tmp)
 
-    save_file(new_dataset, "data/intervene_100.json", save_csv=True)
+    save_file(new_dataset, results_path, save_csv=True)
     
 if __name__ == "__main__":
     """
     Arguments:
     --model-name (str): name of the model
     --cache-dir (str): directory to store/load cache of model. If value for argument not passed, uses default cache directory. This is optional.
+    --results-path (str): path to save the results
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-name", type=str, required=True)
     parser.add_argument("--cache-dir", type=str, required=False)
+    parser.add_argument("--results-path", type=str, required=True)
     args = parser.parse_args()
     
-    main(args.model_name, args.cache_dir)
+    main(args.model_name, args.cache_dir, args.results_path)
