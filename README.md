@@ -1,6 +1,6 @@
 # self-correction-llm
 
-This repository contains code and resources for experimenting with self-correction techniques in DeepSeek-R1-Distill-Llama-8B. It includes scripts for data generation, attention head patching, and various utilities for analyzing model behavior. Note: This was prepared for [Mats](https://www.matsprogram.org/) application.
+This repository contains code and resources for experimenting with self-correction capability in DeepSeek-R1-Distill-Llama-8B. It includes scripts for data generation, attention head patching, and various utilities for analyzing model behavior. Note: This was prepared for [Mats](https://www.matsprogram.org/) application.
 
 
 ## Environment Setup
