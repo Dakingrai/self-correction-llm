@@ -27,7 +27,7 @@ Step 3: Get Accuracy for DeepSeek-R1-Distill-Llama-8B model
 python get_accuracy.py --model-name "meta-llama/Meta-Llama-3-8B" --cache-dir "path-to-cache-dir"
 ```
 ## Experiment 2 & 3: Localization of important layers and sub-layers (FF and MHA)
-The experiment 2 and 3 that performs direct logit attribution (DLA) across layers and sub-layers for identifying which layers and sub-layers are responsible for promoting the error-correcting reasoning tokens or repeating-error tokens can be found in `dla-experiment.ipynb`
+The experiment 2 and 3 that performs direct logit attribution (DLA) across layers and sub-layers for identifying which layers and sub-layers are responsible for promoting the error-correcting reasoning tokens or repeating-error tokens can be found in `dla-experiment.ipynb`. This experiment was heavily inspired from an excellent Arena Mechanistic Interpretability (tutorial)[https://arena3-chapter1-transformer-interp.streamlit.app/].
 
 ## Experiment 4: Localization of important attention heads
 Step 1: Getting the denoising patching effect for all attention head across layers
