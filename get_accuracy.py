@@ -99,16 +99,10 @@ if __name__ == "__main__":
     Arguments:
     --model-name (str): name of the model
     --cache-dir (str): directory to store/load cache of model. If value for argument not passed, uses default cache directory. This is optional.
-
-    Example: 
-    python get_accuracy.py --model-name deepseek-ai/DeepSeek-R1-Distill-Llama-8B --cache-dir "../../../../../projects/ziyuyao/models/llama3-8b-deepseek" 
-    python get_accuracy.py --model-name meta-llama/Meta-Llama-3-8B --cache-dir "../../../../../projects/ziyuyao/models/llama3-8b-cache"
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-name", type=str, required=True)
     parser.add_argument("--cache-dir", type=str, required=False)
     args = parser.parse_args()
 
-    model_name = args.model_name
-    cache_dir = args.cache_dir
-    main(model_name, cache_dir)
+    main(args.model_name, args.cache_dir)

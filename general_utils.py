@@ -86,7 +86,7 @@ class MyDataset(Dataset):
     
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        return row['question'], row["corrupt_question"], self.model.to_single_token(row['clean_output']), self.model.to_single_token(row['corrupt_output'])
+        return row['question'], row["corrupt_question"], self.model.to_single_token(" " +row['clean_output']), self.model.to_single_token(" " +row['corrupt_output'])
     
     def to_dataloader(self, batch_size: int):
         return DataLoader(self, batch_size=batch_size, shuffle=False, collate_fn=collate_data)

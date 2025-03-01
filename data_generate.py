@@ -5,6 +5,7 @@ import random
 import csv
 import re
 from transformers import AutoTokenizer
+import argparse
 
 seed = 60
 random.seed(seed)
@@ -48,10 +49,7 @@ def prepare_dataset(num_examples):
         return full_dataset.select(sampled_indices)
 
 
-def main():
-    # Tokenization length
-    model_name = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
-    cache_dir = "../../../projects/ziyuyao/models/llama3-8b-deepseek"
+def main(model_name, cache_dir):
     tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=cache_dir)
     num_examples = 100  # Specify the number of examples you want to use
     dataset = prepare_dataset(num_examples)
@@ -72,4 +70,14 @@ def main():
     save_file(new_dataset, "data/intervene_100.json", save_csv=True)
     
 if __name__ == "__main__":
-    main()
+    """
+    Arguments:
+    --model-name (str): name of the model
+    --cache-dir (str): directory to store/load cache of model. If value for argument not passed, uses default cache directory. This is optional.
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model-name", type=str, required=True)
+    parser.add_argument("--cache-dir", type=str, required=False)
+    args = parser.parse_args()
+    
+    main(args.model_name, args.cache_dir)
